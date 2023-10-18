@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org/">
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>BuuWho</title>
+</head>
+<body>
+<h1>Films on BuuWho</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Rating</th>
+        <th>Release Year</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tr th:each="film : ${films}">
+        <td th:text="${film.id}"></td>
+        <td th:text="${film.title}"></td>
+        <td th:text="${film.description}"></td>
+        <td th:text="${film.rating}"></td>
+        <td th:text="${film.releaseYear}"></td>
+        <td th:text="${film.rentalRate}"></td>
+        <td><a th:href="@{/web/author/edit/{id}(id=${film.id})}">Edit</a></td>
+        <td><a th:href="@{/web/author/delete/{id}(id=${film.id})}">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>
